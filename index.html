@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Painel de Voos — SN-2026</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ⚠️ CONFIGURAÇÃO — substitua pelos valores do seu projeto Supabase -->
+
+    <header>
+        <div class="header-left">
+            <h1 id="airport-name">Painel de Voos</h1>
+            <p id="airport-subtitle">Selecione um aeroporto abaixo</p>
+        </div>
+        <div class="header-right">
+            <span class="badge-src">✓ SIROS/ANAC + Supabase</span>
+            <div class="clock" id="clock">--:--:--</div>
+        </div>
+    </header>
+
+    <!-- Filtros -->
+    <div class="filters-panel">
+        <div class="filters-title">Selecionar aeroporto e data</div>
+        <div class="filters-row">
+
+            <div class="filter-group">
+                <label for="sel-state">Estado</label>
+                <select id="sel-state" onchange="onStateChange()">
+                    <option value="">Todos os estados</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="sel-city">Município</label>
+                <select id="sel-city" onchange="onCityChange()">
+                    <option value="">Selecione o estado</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="sel-airport">Aeroporto (ICAO)</label>
+                <select id="sel-airport" onchange="onAirportChange()">
+                    <option value="">Selecione o município</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="sel-date">Data</label>
+                <input type="date" id="sel-date" onchange="loadFlights()">
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="filter-group">
+                <label for="filter-airline">Companhia</label>
+                <select id="filter-airline" onchange="applyFilters()">
+                    <option value="">Todas</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="filter-type">Operação</label>
+                <select id="filter-type" onchange="applyFilters()">
+                    <option value="">Todas</option>
+                    <option value="Domestico">Doméstico</option>
+                    <option value="Internacional">Internacional</option>
+                </select>
+            </div>
+
+            <button class="btn" id="btn-refresh" onclick="loadFlights()" disabled>↺ Atualizar</button>
+        </div>
+    </div>
+
+    <!-- Cards de info -->
+    <div class="info-cards" id="info-cards" style="display:none">
+        <div class="info-card">
+            <div class="lbl">Aeroporto</div>
+            <div class="val accent" id="card-icao">—</div>
+        </div>
+        <div class="info-card">
+            <div class="lbl">Data</div>
+            <div class="val" id="card-data">—</div>
+        </div>
+        <div class="info-card">
+            <div class="lbl">Chegadas</div>
+            <div class="val" id="card-chegadas">—</div>
+        </div>
+        <div class="info-card">
+            <div class="lbl">Partidas</div>
+            <div class="val" id="card-partidas">—</div>
+        </div>
+        <div class="info-card">
+            <div class="lbl">Último pipeline</div>
+            <div class="val" id="card-pipeline">—</div>
+        </div>
+    </div>
+
+    <div id="meta-bar">Carregando lista de aeroportos...</div>
+
+    <!-- Chegadas -->
+    <div class="section-title"><span class="arrow-in">↓</span> Chegadas</div>
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th onclick="sortTable('chegadas','chegada_iso')">Horário (BRT) ↕</th>
+                    <th>Voo</th>
+                    <th>Companhia</th>
+                    <th>Aeronave</th>
+                    <th>Assentos</th>
+                    <th onclick="sortTable('chegadas','origem_icao')">Origem ↕</th>
+                    <th>Operação</th>
+                </tr>
+            </thead>
+            <tbody id="tbody-chegadas">
+                <tr>
+                    <td colspan="7" class="empty">Selecione um aeroporto para carregar os voos.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="pagination" id="pag-chegadas"></div>
+
+    <!-- Partidas -->
+    <div class="section-title"><span class="arrow-out">↑</span> Partidas</div>
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th onclick="sortTable('partidas','partida_iso')">Horário (BRT) ↕</th>
+                    <th>Voo</th>
+                    <th>Companhia</th>
+                    <th>Aeronave</th>
+                    <th>Assentos</th>
+                    <th onclick="sortTable('partidas','destino_icao')">Destino ↕</th>
+                    <th>Operação</th>
+                </tr>
+            </thead>
+            <tbody id="tbody-partidas">
+                <tr>
+                    <td colspan="7" class="empty">Selecione um aeroporto para carregar os voos.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="pagination" id="pag-partidas"></div>
+
+    <footer>
+        <span>Dados: <a href="https://sas.anac.gov.br/sas/siros_api/" target="_blank">SIROS/ANAC</a> · Banco: <a
+                href="https://supabase.com" target="_blank">Supabase</a></span>
+        <span>Horários em BRT (UTC-3) · Histórico completo disponível</span>
+        <span><a href="https://github.com/SN-2026" target="_blank">Ver no GitHub</a></span>
+    </footer>
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
