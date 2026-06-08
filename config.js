@@ -1,5 +1,5 @@
 window.APP_CONFIG = {
   SUPABASE_URL: "https://gmkccnmvalhopasfyowe.supabase.co",
-  SUPABASE_ANON_KEY: "sb_publishable_iWsQ3dxCc8S2gcnDzS1z5w_zbiX8Py_",
+  SUPABASE_ANON_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdta2Njbm12YWxob3Bhc2Z5b3dlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAyODUxNjcsImV4cCI6MjA5NTg2MTE2N30.POQioEMDB2mC391UWirZQLGnyODXfy9jeLj7k3d0lbE",
   PER_PAGE: 50,
 };

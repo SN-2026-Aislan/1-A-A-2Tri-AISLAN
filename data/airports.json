@@ -1,0 +1,266 @@
+[
+  {
+    "icao": "SBBE",
+    "name": "Aeroporto Internacional Val de Cans",
+    "city": "BelÃ©m",
+    "state": "PA"
+  },
+  {
+    "icao": "SBBH",
+    "name": "Aeroporto da Pampulha",
+    "city": "Belo Horizonte",
+    "state": "MG"
+  },
+  {
+    "icao": "SBBR",
+    "name": "Aeroporto Internacional de BrasÃ­lia",
+    "city": "BrasÃ­lia",
+    "state": "DF"
+  },
+  {
+    "icao": "SBBV",
+    "name": "Aeroporto Internacional Atlas Brasil Cantanhede",
+    "city": "Boa Vista",
+    "state": "RR"
+  },
+  {
+    "icao": "SBCA",
+    "name": "Aeroporto Municipal de Cascavel",
+    "city": "Cascavel",
+    "state": "PR"
+  },
+  {
+    "icao": "SBCF",
+    "name": "Aeroporto Internacional Tancredo Neves",
+    "city": "Belo Horizonte",
+    "state": "MG"
+  },
+  {
+    "icao": "SBCG",
+    "name": "Aeroporto Internacional A. J. Palhano",
+    "city": "Campo Grande",
+    "state": "MS"
+  },
+  {
+    "icao": "SBCT",
+    "name": "Aeroporto Internacional Afonso Pena",
+    "city": "Curitiba",
+    "state": "PR"
+  },
+  {
+    "icao": "SBCX",
+    "name": "Aeroporto Internacional Hugo Cantergiani",
+    "city": "Caxias do Sul",
+    "state": "RS"
+  },
+  {
+    "icao": "SBCY",
+    "name": "Aeroporto Internacional Marechal Rondon",
+    "city": "CuiabÃ¡",
+    "state": "MT"
+  },
+  {
+    "icao": "SBEG",
+    "name": "Aeroporto Internacional Eduardo Gomes",
+    "city": "Manaus",
+    "state": "AM"
+  },
+  {
+    "icao": "SBFI",
+    "name": "Aeroporto Internacional Foz do IguaÃ§u",
+    "city": "Foz do IguaÃ§u",
+    "state": "PR"
+  },
+  {
+    "icao": "SBFL",
+    "name": "Aeroporto Internacional HercÃ­lio Luz",
+    "city": "FlorianÃ³polis",
+    "state": "SC"
+  },
+  {
+    "icao": "SBFZ",
+    "name": "Aeroporto Internacional Pinto Martins",
+    "city": "Fortaleza",
+    "state": "CE"
+  },
+  {
+    "icao": "SBGL",
+    "name": "Aeroporto Internacional do GaleÃ£o",
+    "city": "Rio de Janeiro",
+    "state": "RJ"
+  },
+  {
+    "icao": "SBGO",
+    "name": "Aeroporto Santa Genoveva",
+    "city": "GoiÃ¢nia",
+    "state": "GO"
+  },
+  {
+    "icao": "SBGR",
+    "name": "Aeroporto Internacional de Guarulhos",
+    "city": "SÃ£o Paulo",
+    "state": "SP"
+  },
+  {
+    "icao": "SBIL",
+    "name": "Aeroporto Jorge Amado",
+    "city": "IlhÃ©us",
+    "state": "BA"
+  },
+  {
+    "icao": "SBJP",
+    "name": "Aeroporto Internacional Presidente Castro Pinto",
+    "city": "JoÃ£o Pessoa",
+    "state": "PB"
+  },
+  {
+    "icao": "SBJU",
+    "name": "Aeroporto Regional Cariri",
+    "city": "Juazeiro do Norte",
+    "state": "CE"
+  },
+  {
+    "icao": "SBJV",
+    "name": "Aeroporto Lauro Carneiro de Loyola",
+    "city": "Joinville",
+    "state": "SC"
+  },
+  {
+    "icao": "SBKP",
+    "name": "Aeroporto Internacional de Viracopos",
+    "city": "Campinas",
+    "state": "SP"
+  },
+  {
+    "icao": "SBLO",
+    "name": "Aeroporto Governador JosÃ© Richa",
+    "city": "Londrina",
+    "state": "PR"
+  },
+  {
+    "icao": "SBMG",
+    "name": "Aeroporto Regional de MaringÃ¡",
+    "city": "MaringÃ¡",
+    "state": "PR"
+  },
+  {
+    "icao": "SBMO",
+    "name": "Aeroporto Internacional Zumbi dos Palmares",
+    "city": "MaceiÃ³",
+    "state": "AL"
+  },
+  {
+    "icao": "SBMQ",
+    "name": "Aeroporto Internacional Alberto Alcolumbre",
+    "city": "MacapÃ¡",
+    "state": "AP"
+  },
+  {
+    "icao": "SBNF",
+    "name": "Aeroporto Internacional Ministro Victor Konder",
+    "city": "Navegantes",
+    "state": "SC"
+  },
+  {
+    "icao": "SBPA",
+    "name": "Aeroporto Internacional Salgado Filho",
+    "city": "Porto Alegre",
+    "state": "RS"
+  },
+  {
+    "icao": "SBPJ",
+    "name": "Aeroporto de Palmas",
+    "city": "Palmas",
+    "state": "TO"
+  },
+  {
+    "icao": "SBPS",
+    "name": "Aeroporto de Porto Seguro",
+    "city": "Porto Seguro",
+    "state": "BA"
+  },
+  {
+    "icao": "SBPV",
+    "name": "Aeroporto Internacional Gov. Jorge Teixeira",
+    "city": "Porto Velho",
+    "state": "RO"
+  },
+  {
+    "icao": "SBRB",
+    "name": "Aeroporto Internacional PlÃ¡cido de Castro",
+    "city": "Rio Branco",
+    "state": "AC"
+  },
+  {
+    "icao": "SBRF",
+    "name": "Aeroporto Internacional do Recife",
+    "city": "Recife",
+    "state": "PE"
+  },
+  {
+    "icao": "SBRJ",
+    "name": "Aeroporto Santos Dumont",
+    "city": "Rio de Janeiro",
+    "state": "RJ"
+  },
+  {
+    "icao": "SBRP",
+    "name": "Aeroporto Leite Lopes",
+    "city": "RibeirÃ£o Preto",
+    "state": "SP"
+  },
+  {
+    "icao": "SBSE",
+    "name": "Aeroporto Santa Maria",
+    "city": "Aracaju",
+    "state": "SE"
+  },
+  {
+    "icao": "SBSG",
+    "name": "Aeroporto Internacional Governador AluÃ­zio Alves",
+    "city": "Natal",
+    "state": "RN"
+  },
+  {
+    "icao": "SBSL",
+    "name": "Aeroporto Internacional Marechal Cunha Machado",
+    "city": "SÃ£o LuÃ­s",
+    "state": "MA"
+  },
+  {
+    "icao": "SBSN",
+    "name": "Aeroporto de SantarÃ©m",
+    "city": "SantarÃ©m",
+    "state": "PA"
+  },
+  {
+    "icao": "SBSP",
+    "name": "Aeroporto de Congonhas",
+    "city": "SÃ£o Paulo",
+    "state": "SP"
+  },
+  {
+    "icao": "SBSV",
+    "name": "Aeroporto Internacional Dep. L. E. MagalhÃ£es",
+    "city": "Salvador",
+    "state": "BA"
+  },
+  {
+    "icao": "SBTE",
+    "name": "Aeroporto Senador PetrÃ´nio Portela",
+    "city": "Teresina",
+    "state": "PI"
+  },
+  {
+    "icao": "SBUL",
+    "name": "Aeroporto Ten. Cel. Av. CÃ©sar Bombonato",
+    "city": "UberlÃ¢ndia",
+    "state": "MG"
+  },
+  {
+    "icao": "SBVT",
+    "name": "Aeroporto de VitÃ³ria",
+    "city": "VitÃ³ria",
+    "state": "ES"
+  }
+]

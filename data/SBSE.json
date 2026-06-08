@@ -1,0 +1,11 @@
+{
+  "updated_at": "2026-06-08T14:17:22.708453+00:00",
+  "data_referencia": "2026-06-08",
+  "airport_icao": "SBSE",
+  "airport_name": "Aeroporto Santa Maria",
+  "airport_info": {},
+  "source": "SIROS/ANAC",
+  "source_url": "https://sas.anac.gov.br/sas/siros_api/",
+  "arrivals": [],
+  "departures": []
+}
