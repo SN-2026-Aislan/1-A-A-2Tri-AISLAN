@@ -1,5 +1,6 @@
 import json
 import os
+from pathlib import Path
 import requests
 from datetime import datetime, timezone, timedelta
 from supabase import create_client
@@ -8,6 +9,9 @@ SUPABASE_URL = os.environ["SUPABASE_URL"]
 SUPABASE_KEY = os.environ["SUPABASE_SERVICE_KEY"]
 
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
+
+BASE_DIR = Path(__file__).resolve().parent
+DATA_DIR = BASE_DIR / "data"
 
 API_BASE     = "https://sas.anac.gov.br/sas/siros_api"
 airports_env = os.environ.get("AIRPORTS", "SBCA")
@@ -21,59 +25,59 @@ hoje = datetime.now(BRT)
 data_ref = hoje.strftime("%d%m%Y")
 data_iso = hoje.strftime("%Y-%m-%d")
 
-print(f"SIROS/ANAC — Data: {hoje.strftime('%d/%m/%Y')} | Aeroportos: {', '.join(AIRPORTS)}")
+print(f"SIROS/ANAC â€” Data: {hoje.strftime('%d/%m/%Y')} | Aeroportos: {', '.join(AIRPORTS)}")
 
-# ── Mapeamentos ───────────────────────────────────────────────────────────────
+# â”€â”€ Mapeamentos â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 # icao -> (nome, cidade, estado)
 AIRPORT_INFO = {
-    "SBRB": ("Aeroporto Internacional Plácido de Castro",    "Rio Branco",              "AC"),
-    "SBMO": ("Aeroporto Internacional Zumbi dos Palmares",   "Maceió",                  "AL"),
-    "SBMQ": ("Aeroporto Internacional Alberto Alcolumbre",   "Macapá",                  "AP"),
+    "SBRB": ("Aeroporto Internacional PlÃ¡cido de Castro",    "Rio Branco",              "AC"),
+    "SBMO": ("Aeroporto Internacional Zumbi dos Palmares",   "MaceiÃ³",                  "AL"),
+    "SBMQ": ("Aeroporto Internacional Alberto Alcolumbre",   "MacapÃ¡",                  "AP"),
     "SBEG": ("Aeroporto Internacional Eduardo Gomes",        "Manaus",                  "AM"),
-    "SBSV": ("Aeroporto Internacional Dep. L. E. Magalhães", "Salvador",                "BA"),
-    "SBIL": ("Aeroporto Jorge Amado",                        "Ilhéus",                  "BA"),
+    "SBSV": ("Aeroporto Internacional Dep. L. E. MagalhÃ£es", "Salvador",                "BA"),
+    "SBIL": ("Aeroporto Jorge Amado",                        "IlhÃ©us",                  "BA"),
     "SBPS": ("Aeroporto de Porto Seguro",                    "Porto Seguro",            "BA"),
     "SBFZ": ("Aeroporto Internacional Pinto Martins",        "Fortaleza",               "CE"),
     "SBJU": ("Aeroporto Regional Cariri",                    "Juazeiro do Norte",       "CE"),
-    "SBBR": ("Aeroporto Internacional de Brasília",          "Brasília",                "DF"),
-    "SBVT": ("Aeroporto de Vitória",                         "Vitória",                 "ES"),
-    "SBGO": ("Aeroporto Santa Genoveva",                     "Goiânia",                 "GO"),
-    "SBSL": ("Aeroporto Internacional Marechal Cunha Machado","São Luís",               "MA"),
-    "SBCY": ("Aeroporto Internacional Marechal Rondon",      "Cuiabá",                  "MT"),
+    "SBBR": ("Aeroporto Internacional de BrasÃ­lia",          "BrasÃ­lia",                "DF"),
+    "SBVT": ("Aeroporto de VitÃ³ria",                         "VitÃ³ria",                 "ES"),
+    "SBGO": ("Aeroporto Santa Genoveva",                     "GoiÃ¢nia",                 "GO"),
+    "SBSL": ("Aeroporto Internacional Marechal Cunha Machado","SÃ£o LuÃ­s",               "MA"),
+    "SBCY": ("Aeroporto Internacional Marechal Rondon",      "CuiabÃ¡",                  "MT"),
     "SBCG": ("Aeroporto Internacional A. J. Palhano",        "Campo Grande",            "MS"),
     "SBCF": ("Aeroporto Internacional Tancredo Neves",       "Belo Horizonte",          "MG"),
     "SBBH": ("Aeroporto da Pampulha",                        "Belo Horizonte",          "MG"),
-    "SBUL": ("Aeroporto Ten. Cel. Av. César Bombonato",      "Uberlândia",              "MG"),
-    "SBBE": ("Aeroporto Internacional Val de Cans",          "Belém",                   "PA"),
-    "SBSN": ("Aeroporto de Santarém",                        "Santarém",                "PA"),
-    "SBJP": ("Aeroporto Internacional Presidente Castro Pinto","João Pessoa",           "PB"),
+    "SBUL": ("Aeroporto Ten. Cel. Av. CÃ©sar Bombonato",      "UberlÃ¢ndia",              "MG"),
+    "SBBE": ("Aeroporto Internacional Val de Cans",          "BelÃ©m",                   "PA"),
+    "SBSN": ("Aeroporto de SantarÃ©m",                        "SantarÃ©m",                "PA"),
+    "SBJP": ("Aeroporto Internacional Presidente Castro Pinto","JoÃ£o Pessoa",           "PB"),
     "SBCT": ("Aeroporto Internacional Afonso Pena",          "Curitiba",                "PR"),
-    "SBFI": ("Aeroporto Internacional Foz do Iguaçu",        "Foz do Iguaçu",           "PR"),
+    "SBFI": ("Aeroporto Internacional Foz do IguaÃ§u",        "Foz do IguaÃ§u",           "PR"),
     "SBCA": ("Aeroporto Municipal de Cascavel",              "Cascavel",                "PR"),
-    "SBLO": ("Aeroporto Governador José Richa",              "Londrina",                "PR"),
-    "SBMG": ("Aeroporto Regional de Maringá",                "Maringá",                 "PR"),
+    "SBLO": ("Aeroporto Governador JosÃ© Richa",              "Londrina",                "PR"),
+    "SBMG": ("Aeroporto Regional de MaringÃ¡",                "MaringÃ¡",                 "PR"),
     "SBRF": ("Aeroporto Internacional do Recife",            "Recife",                  "PE"),
-    "SBTE": ("Aeroporto Senador Petrônio Portela",           "Teresina",                "PI"),
-    "SBGL": ("Aeroporto Internacional do Galeão",            "Rio de Janeiro",          "RJ"),
+    "SBTE": ("Aeroporto Senador PetrÃ´nio Portela",           "Teresina",                "PI"),
+    "SBGL": ("Aeroporto Internacional do GaleÃ£o",            "Rio de Janeiro",          "RJ"),
     "SBRJ": ("Aeroporto Santos Dumont",                      "Rio de Janeiro",          "RJ"),
-    "SBSG": ("Aeroporto Internacional Governador Aluízio Alves","Natal",                "RN"),
+    "SBSG": ("Aeroporto Internacional Governador AluÃ­zio Alves","Natal",                "RN"),
     "SBPA": ("Aeroporto Internacional Salgado Filho",        "Porto Alegre",            "RS"),
     "SBCX": ("Aeroporto Internacional Hugo Cantergiani",     "Caxias do Sul",           "RS"),
     "SBPV": ("Aeroporto Internacional Gov. Jorge Teixeira",  "Porto Velho",             "RO"),
     "SBBV": ("Aeroporto Internacional Atlas Brasil Cantanhede","Boa Vista",             "RR"),
-    "SBFL": ("Aeroporto Internacional Hercílio Luz",         "Florianópolis",           "SC"),
+    "SBFL": ("Aeroporto Internacional HercÃ­lio Luz",         "FlorianÃ³polis",           "SC"),
     "SBJV": ("Aeroporto Lauro Carneiro de Loyola",           "Joinville",               "SC"),
     "SBNF": ("Aeroporto Internacional Ministro Victor Konder","Navegantes",             "SC"),
-    "SBGR": ("Aeroporto Internacional de Guarulhos",         "São Paulo",               "SP"),
-    "SBSP": ("Aeroporto de Congonhas",                       "São Paulo",               "SP"),
+    "SBGR": ("Aeroporto Internacional de Guarulhos",         "SÃ£o Paulo",               "SP"),
+    "SBSP": ("Aeroporto de Congonhas",                       "SÃ£o Paulo",               "SP"),
     "SBKP": ("Aeroporto Internacional de Viracopos",         "Campinas",                "SP"),
-    "SBRP": ("Aeroporto Leite Lopes",                        "Ribeirão Preto",          "SP"),
+    "SBRP": ("Aeroporto Leite Lopes",                        "RibeirÃ£o Preto",          "SP"),
     "SBSE": ("Aeroporto Santa Maria",                        "Aracaju",                 "SE"),
     "SBPJ": ("Aeroporto de Palmas",                          "Palmas",                  "TO"),
 }
 
-# Atalho só com nomes (usado internamente para rota_nome)
+# Atalho sÃ³ com nomes (usado internamente para rota_nome)
 AIRPORT_NAMES = {icao: info[0] for icao, info in AIRPORT_INFO.items()}
 
 AIRLINES = {
@@ -138,7 +142,7 @@ def get_tipo_operacao(ds_tipo_servico: str) -> str:
     return "Domestico"
 
 
-# ── Airports.json (para o frontend) ──────────────────────────────────────────
+# â”€â”€ Airports.json (para o frontend) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 def gerar_airports_json() -> None:
     """Gera data/airports.json com a lista de aeroportos para os selects do painel."""
@@ -146,13 +150,13 @@ def gerar_airports_json() -> None:
         {"icao": icao, "name": info[0], "city": info[1], "state": info[2]}
         for icao, info in sorted(AIRPORT_INFO.items())
     ]
-    os.makedirs("data", exist_ok=True)
-    with open("data/airports.json", "w", encoding="utf-8") as fh:
+    DATA_DIR.mkdir(exist_ok=True)
+    with (DATA_DIR / "airports.json").open("w", encoding="utf-8") as fh:
         json.dump(lista, fh, ensure_ascii=False, indent=2)
     print(f"  Gerado: data/airports.json ({len(lista)} aeroportos)")
 
 
-# ── Busca principal ───────────────────────────────────────────────────────────
+# â”€â”€ Busca principal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 def buscar_todos_voos() -> list:
     url = f"{API_BASE}/voos"
@@ -185,7 +189,7 @@ def buscar_todos_voos() -> list:
 
 
 def filtrar_aeroporto(todos_voos: list, icao: str):
-    """Separa chegadas e partidas para um aeroporto específico."""
+    """Separa chegadas e partidas para um aeroporto especÃ­fico."""
     chegadas = []
     partidas = []
 
@@ -207,7 +211,7 @@ def filtrar_aeroporto(todos_voos: list, icao: str):
         partida_iso = parse_siros_dt(partida)
         chegada_iso = parse_siros_dt(chegada)
 
-        # ── Nomes de campo alinhados com a tabela voos do Supabase ──
+        # â”€â”€ Nomes de campo alinhados com a tabela voos do Supabase â”€â”€
         registro = {
             "data_referencia":  data_iso,
             "airport_icao":     icao,
@@ -282,9 +286,9 @@ def enviar_supabase(icao: str, chegadas: list, partidas: list) -> None:
         print("  Erro ao enviar para o Supabase:", e)
 
 
-# ── Execucao ──────────────────────────────────────────────────────────────────
+# â”€â”€ Execucao â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-os.makedirs("data", exist_ok=True)
+DATA_DIR.mkdir(exist_ok=True)
 gerar_airports_json()
 
 todos_voos = buscar_todos_voos()
@@ -294,7 +298,7 @@ if not todos_voos:
 else:
     for icao in AIRPORTS:
         info = AIRPORT_INFO.get(icao, (icao, icao, "?"))
-        print(f"\nProcessando {icao} — {info[0]}...")
+        print(f"\nProcessando {icao} â€” {info[0]}...")
 
         chegadas, partidas = filtrar_aeroporto(todos_voos, icao)
         print(f"  {len(chegadas)} chegadas, {len(partidas)} partidas")
@@ -318,7 +322,7 @@ else:
             "departures":      partidas,
         }
 
-        with open(f"data/{icao}.json", "w", encoding="utf-8") as fh:
+        with (DATA_DIR / f"{icao}.json").open("w", encoding="utf-8") as fh:
             json.dump(output, fh, ensure_ascii=False, indent=2)
 
         print(f"  Salvo: data/{icao}.json")
@@ -327,7 +331,7 @@ else:
 
 print("\nConcluido.")
 
-# Registra execução na tabela opcional (para o card "Último pipeline" no painel)
+# Registra execuÃ§Ã£o na tabela opcional (para o card "Ãšltimo pipeline" no painel)
 try:
     total_voos = sum(
         len(filtrar_aeroporto(todos_voos, icao)[0]) +
