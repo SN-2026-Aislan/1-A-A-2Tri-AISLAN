@@ -6,7 +6,7 @@ from datetime import datetime, timezone, timedelta
 from supabase import create_client
 
 SUPABASE_URL = os.environ["https://gmkccnmvalhopasfyowe.supabase.co"]
-SUPABASE_KEY = os.environ["eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdta2Njbm12YWxob3Bhc2Z5b3dlIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4MDI4NTE2NywiZXhwIjoyMDk1ODYxMTY3fQ.zksJid5XPp6jLE8xrxUPrtMkOPruuwuJqVG8YYtIFMM"]
+SUPABASE_KEY = os.environ["sb_secret_Oqb4qAf9EcQqiJ4ZSYtRtg_aDaxZ-pk"]
 
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
