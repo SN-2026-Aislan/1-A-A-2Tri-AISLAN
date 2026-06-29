@@ -2,7 +2,7 @@
   {
     "icao": "SBBE",
     "name": "Aeroporto Internacional Val de Cans",
-    "city": "BelÃ©m",
+    "city": "Belém",
     "state": "PA"
   },
   {
@@ -13,8 +13,8 @@
   },
   {
     "icao": "SBBR",
-    "name": "Aeroporto Internacional de BrasÃ­lia",
-    "city": "BrasÃ­lia",
+    "name": "Aeroporto Internacional de Brasília",
+    "city": "Brasília",
     "state": "DF"
   },
   {
@@ -56,7 +56,7 @@
   {
     "icao": "SBCY",
     "name": "Aeroporto Internacional Marechal Rondon",
-    "city": "CuiabÃ¡",
+    "city": "Cuiabá",
     "state": "MT"
   },
   {
@@ -67,14 +67,14 @@
   },
   {
     "icao": "SBFI",
-    "name": "Aeroporto Internacional Foz do IguaÃ§u",
-    "city": "Foz do IguaÃ§u",
+    "name": "Aeroporto Internacional Foz do Iguaçu",
+    "city": "Foz do Iguaçu",
     "state": "PR"
   },
   {
     "icao": "SBFL",
-    "name": "Aeroporto Internacional HercÃ­lio Luz",
-    "city": "FlorianÃ³polis",
+    "name": "Aeroporto Internacional Hercílio Luz",
+    "city": "Florianópolis",
     "state": "SC"
   },
   {
@@ -85,32 +85,32 @@
   },
   {
     "icao": "SBGL",
-    "name": "Aeroporto Internacional do GaleÃ£o",
+    "name": "Aeroporto Internacional do Galeão",
     "city": "Rio de Janeiro",
     "state": "RJ"
   },
   {
     "icao": "SBGO",
     "name": "Aeroporto Santa Genoveva",
-    "city": "GoiÃ¢nia",
+    "city": "Goiânia",
     "state": "GO"
   },
   {
     "icao": "SBGR",
     "name": "Aeroporto Internacional de Guarulhos",
-    "city": "SÃ£o Paulo",
+    "city": "São Paulo",
     "state": "SP"
   },
   {
     "icao": "SBIL",
     "name": "Aeroporto Jorge Amado",
-    "city": "IlhÃ©us",
+    "city": "Ilhéus",
     "state": "BA"
   },
   {
     "icao": "SBJP",
     "name": "Aeroporto Internacional Presidente Castro Pinto",
-    "city": "JoÃ£o Pessoa",
+    "city": "João Pessoa",
     "state": "PB"
   },
   {
@@ -133,26 +133,26 @@
   },
   {
     "icao": "SBLO",
-    "name": "Aeroporto Governador JosÃ© Richa",
+    "name": "Aeroporto Governador José Richa",
     "city": "Londrina",
     "state": "PR"
   },
   {
     "icao": "SBMG",
-    "name": "Aeroporto Regional de MaringÃ¡",
-    "city": "MaringÃ¡",
+    "name": "Aeroporto Regional de Maringá",
+    "city": "Maringá",
     "state": "PR"
   },
   {
     "icao": "SBMO",
     "name": "Aeroporto Internacional Zumbi dos Palmares",
-    "city": "MaceiÃ³",
+    "city": "Maceió",
     "state": "AL"
   },
   {
     "icao": "SBMQ",
     "name": "Aeroporto Internacional Alberto Alcolumbre",
-    "city": "MacapÃ¡",
+    "city": "Macapá",
     "state": "AP"
   },
   {
@@ -187,7 +187,7 @@
   },
   {
     "icao": "SBRB",
-    "name": "Aeroporto Internacional PlÃ¡cido de Castro",
+    "name": "Aeroporto Internacional Plácido de Castro",
     "city": "Rio Branco",
     "state": "AC"
   },
@@ -206,7 +206,7 @@
   {
     "icao": "SBRP",
     "name": "Aeroporto Leite Lopes",
-    "city": "RibeirÃ£o Preto",
+    "city": "Ribeirão Preto",
     "state": "SP"
   },
   {
@@ -217,50 +217,50 @@
   },
   {
     "icao": "SBSG",
-    "name": "Aeroporto Internacional Governador AluÃ­zio Alves",
+    "name": "Aeroporto Internacional Governador Aluízio Alves",
     "city": "Natal",
     "state": "RN"
   },
   {
     "icao": "SBSL",
     "name": "Aeroporto Internacional Marechal Cunha Machado",
-    "city": "SÃ£o LuÃ­s",
+    "city": "São Luís",
     "state": "MA"
   },
   {
     "icao": "SBSN",
-    "name": "Aeroporto de SantarÃ©m",
-    "city": "SantarÃ©m",
+    "name": "Aeroporto de Santarém",
+    "city": "Santarém",
     "state": "PA"
   },
   {
     "icao": "SBSP",
     "name": "Aeroporto de Congonhas",
-    "city": "SÃ£o Paulo",
+    "city": "São Paulo",
     "state": "SP"
   },
   {
     "icao": "SBSV",
-    "name": "Aeroporto Internacional Dep. L. E. MagalhÃ£es",
+    "name": "Aeroporto Internacional Dep. L. E. Magalhães",
     "city": "Salvador",
     "state": "BA"
   },
   {
     "icao": "SBTE",
-    "name": "Aeroporto Senador PetrÃ´nio Portela",
+    "name": "Aeroporto Senador Petrônio Portela",
     "city": "Teresina",
     "state": "PI"
   },
   {
     "icao": "SBUL",
-    "name": "Aeroporto Ten. Cel. Av. CÃ©sar Bombonato",
-    "city": "UberlÃ¢ndia",
+    "name": "Aeroporto Ten. Cel. Av. César Bombonato",
+    "city": "Uberlândia",
     "state": "MG"
   },
   {
     "icao": "SBVT",
-    "name": "Aeroporto de VitÃ³ria",
-    "city": "VitÃ³ria",
+    "name": "Aeroporto de Vitória",
+    "city": "Vitória",
     "state": "ES"
   }
 ]
