@@ -50,7 +50,7 @@
 
         .header-left h1 {
             font-size: 1.3rem;
-            font-weight: 700;voos?origem_icao=eq.${icao}
+            font-weight: 700;
             color: var(--accent);
         }
 
@@ -564,7 +564,7 @@
                     <label for="filter-type">Operação</label>
                     <select id="filter-type" onchange="applyFilters()">
                         <option value="">Todas</option>
-                        <option value="Doméstico">Doméstico</option>
+                        <option value="Domestico">Doméstico</option>
                         <option value="Internacional">Internacional</option>
                     </select>
                 </div>
@@ -630,7 +630,7 @@
                         <th>Companhia</th>
                         <th>Aeronave</th>
                         <th>Assentos</th>
-                        <th onclick="sortTable('partidas, destino_icao')">Destino ↕</th>
+                        <th onclick="sortTable('partidas','destino_icao')">Destino ↕</th>
                         <th>Operação</th>
                     </tr>
                 </thead>
@@ -964,7 +964,7 @@
         }
 
         function populateAirlineFilter() {
-            const airlines = new Set([...chegadasAll, ...partidasAll].map(f => f.nome_empresa).filter(Boolean));
+            const airlines = new Set([...chegadasAll, ...partidasAll].map(f => f.airline).filter(Boolean));
             const sel = document.getElementById('filter-airline');
             const cur = sel.value;
             sel.innerHTML = '<option value="">Todas</option>';
@@ -980,9 +980,9 @@
             const fA = document.getElementById('filter-airline').value;
             const fT = document.getElementById('filter-type').value;
             chegadasFilt = chegadasAll.filter(f =>
-                (!fA || f.nome_empresa === fA) && (!fT || f.tipo_operacao === fT));
+                (!fA || f.airline === fA) && (!fT || f.tipo_operacao === fT));
             partidasFilt = partidasAll.filter(f =>
-                (!fA || f.nome_empresa === fA) && (!fT || f.tipo_operacao === fT));
+                (!fA || f.airline === fA) && (!fT || f.tipo_operacao === fT));
             pagChegadas = pagPartidas = 1;
             renderTables();
         }
@@ -1013,8 +1013,8 @@
             const rota = kind === 'arrival'
                 ? escapeHtml(f.origem_icao || '—')
                 : escapeHtml(f.destino_icao || '—');
-            const callsign = escapeHtml((f.icao_empresa || '') + (f.numero_voo || '?'));
-            const empresa = escapeHtml(f.nome_empresa || '?');
+            const callsign = escapeHtml((f.airline_icao || '') + (f.numero_voo || '?'));
+            const empresa = escapeHtml(f.airline || '?');
             const equip = escapeHtml(f.equipamento || '—');
             const assentos = f.assentos
                 ? `<span class="seats-pill">✦ ${escapeHtml(String(f.assentos))}</span>` : '—';
@@ -1104,8 +1104,8 @@
             }
             const slice = histAll.slice((pagHist - 1) * PER_PAGE, pagHist * PER_PAGE);
             tb.innerHTML = slice.map(f => `<tr>
-        <td class="td-flight">${escapeHtml((f.icao_empresa || '') + (f.nr_voo || ''))}</td>
-        <td><span class="airline-pill">${escapeHtml(f.icao_empresa || '?')}</span></td>
+        <td class="td-flight">${escapeHtml((f.airline_icao || '') + (f.numero_voo || ''))}</td>
+        <td><span class="airline-pill">${escapeHtml(f.airline_icao || '?')}</span></td>
         <td>${escapeHtml(fmtData(f.dt_referencia))}</td>
         <td class="td-muted">${escapeHtml(f.origem_icao || '—')}</td>
         <td class="td-muted">${escapeHtml(f.destino_icao || '—')}</td>
@@ -1126,10 +1126,10 @@
                 }
                 tb.innerHTML = exec.map(e => `<tr>
           <td class="td-time">${fmtDatetime(e.concluido_em)}</td>
-          <td class="td-muted">${escapeHtml((e.aeroportos_buscados || []).join(', '))}</td>
-          <td>${escapeHtml(String(e.voos_processados ?? '—'))}</td>
-          <td>${escapeHtml(String(e.lotes_enviados ?? '—'))}</td>
-          <td>${e.erros > 0 ? `<span style="color:var(--orange)">${escapeHtml(String(e.erros))}</span>` : '0'}</td>
+          <td class="td-muted">${escapeHtml(((e.aeroportos_buscados || e.aeroportos || []) || []).join(', '))}</td>
+          <td>${escapeHtml(String((e.voos_processados ?? e.total_voos) ?? '—'))}</td>
+          <td>${escapeHtml(String((e.lotes_enviados ?? 0) ?? '—'))}</td>
+          <td>${(e.erros || 0) > 0 ? `<span style="color:var(--orange)">${escapeHtml(String(e.erros || 0))}</span>` : '0'}</td>
           <td>${statusPipelineBadge(e.status)}</td>
         </tr>`).join('');
             } catch (e) {
